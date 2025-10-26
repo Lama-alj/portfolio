@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lama Aljohani — Portfolio</title>
+  <link rel="icon" type="image/png" href="images\brand_logo-removebg-preview.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<canvas id="starsCanvas"></canvas>
+<body>
+  <div class="stars"></div>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand"><img src="images\brand_logo-removebg-preview.png" alt="logo"><span class="dot">.</span></div>
+      <nav class="nav">
+        <a href="#contactMe">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="greet">Hello,</p>
+          <h1 class="hero-name">I'm <strong>Lama Aljohani</strong></h1>
+          <p class="role">Senior IT Student · Passionate about tech & design</p>
+          <p class="tag">“Every challenge is a chance to grow”</p>
+          <div class="cta">
+            <a class="btn primary" href="extrnalLinks\Lama-Abdlhamid-Aljohani-CV.pdf" download>
+              <img src="images\icons8-download-24.png" alt="Download button"/>Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="myWork" class="works">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="card-body">
+              <h3>Buildodoro</h3>
+              <div class="tags"><span>UX Design</span><span>UI Design</span><span>Figma</span></div>
+              <p>An app inspired by the Pomodoro Technique — focus, earn coins, build a city.</p>
+              <a class="link" href="extrnalLinks/Buildodoro.pdf" target="_blank">View →</a>
+            </div>
+             <div class="card-media">
+              <img src="images\build.png" alt="Buildodoro">
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <h3>Tiny Genius</h3>
+              <div class="tags"><span>UX Design</span><span>UI Design</span></div>
+              <p>Educational mobile game for kids — letters & numbers with rewards.</p>
+              <a class="link" href="extrnalLinks/Tiny genius.pdf" target="_blank">View →</a>
+            </div>
+             <div class="card-media">
+              <img src="images\Tiny.png" alt="Tiny Genius">
+            </div>
+          </article>
+
+           <article class="card">
+            <div class="card-body">
+              <h3>HR Club</h3>
+              <div class="tags"><span>UX Design</span><span>UI Design</span></div>
+              <p>Collaborated with the HR Club as a Designer, creating visual content and publications</p>
+              <a class="link" href="extrnalLinks\HRClubDesigns.pdf" target="_blank">View →</a>
+            </div>
+             <div class="card-media">
+              <img src="images\HRClub.png" alt="Project_image">
+            </div>
+          </article>
+
+           <article class="card">
+            <div class="card-body">
+              <h3>Rare Academy</h3>
+              <div class="tags"><span>Logo Design</span><span>Branding</span></div>
+              <p>Designed a logo for Rare Academy, which offers unique and exceptional courses.</p>
+              <a class="link" href="extrnalLinks\Ac_Logo.pdf" target="_blank">View →</a>
+            </div>
+             <div class="card-media">
+              <img src="images\Rare_logo.png" alt="Rare_log"/>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contactMe" class="contact">
+      <div class="container contact-inner">
+        <h2 class="contactText" >Contact</h2>
+        <div class="socials">
+          <a href="mailto:laljohani0019@stu.kau.edu.sa" aria-label="email"><img src="images\icons8-email-48.png" alt="My email"/>Email</a>
+          <a href="https://www.linkedin.com/in/lama-aljohani-677639282" target="_blank" aria-label="linkedin"><img src="images\icons8-linkedin-32.png" alt="My linkedin account"/>LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Built by Lama Aljohani<img src="images\heart.png" alt="heart"/> • © <span id="year"></span></div>
+  </footer>
+
+  <button id="topBtn" aria-label="Back to top">↑</button>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    const starsContainer = document.querySelector('.stars');
+    
+
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+
+      const startX = Math.random() * window.innerWidth * 0.4;
+      const startY = Math.random() * window.innerHeight * 0.3;
+      star.style.left = `${startX}px`;
+      star.style.bottom = `${startY}px`;
+
+      const size = Math.random() * 1 + 1.5;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+
+      const xDirection = (Math.random() < 0.5 ? -1 : 1) * (40 + Math.random() * 60);
+      const yDirection = -100 - Math.random() * 40;
+      star.style.setProperty('--x-move', `${xDirection}vw`);
+      star.style.setProperty('--y-move', `${yDirection}vh`);
+
+      const duration = 10 + Math.random() * 10;
+      star.style.animation = `moveStars ${duration}s linear infinite, twinkle 2s ease-in-out infinite alternate`;
+
+      starsContainer.appendChild(star);
+    }
+  </script>
+</body>
+</html>
