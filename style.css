@@ -96,7 +96,7 @@ main, header, footer { position: relative; z-index: 2; }
 .site-footer img{width:16px;height:16px;vertical-align: middle;margin-left:2px;margin-bottom: 2px}
 
 /* top button */
-#topBtn{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:none;background:linear-gradient(90deg,var(--bg-b), #37e8d8);color:var(--bg-a);display:none;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.35);font-size:1rem;font-weight: 800;transition: all 0.3s ease}
+#topBtn{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:none;background:linear-gradient(90deg,var(--bg-b), #37e8d8);color:var(--bg-a);display:none;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.35);font-size:1rem;font-weight: 800;transition: all 0.3s ease; z-index: 9999;}
 #topBtn:hover{box-shadow: 0 0 18px var(--bg-b);transform: translateY(-3px)}
 
 @keyframes pulse {
